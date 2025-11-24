@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test CORS</title>
+</head>
+<body>
+    <h1>🔍 Test de CORS y Conexión API</h1>
+    
+    <button onclick="testConexion()">Test Conexión API</button>
+    <button onclick="testLogin()">Test Login</button>
+    <button onclick="testProductos()">Test Productos</button>
+    
+    <div id="resultado" style="margin: 20px; padding: 15px; border: 1px solid #ccc;"></div>
+
+    <script>
+        const API_URL = 'http://localhost:3001/api';
+        
+        async function testConexion() {
+            try {
+                const response = await fetch('http://localhost:3001/');
+                const data = await response.json();
+                document.getElementById('resultado').innerHTML = `
+                    <h3>🌐 Test Conexión:</h3>
+                    <p style="color: green;">✅ API CONECTADA: ${data.message}</p>
+                    <p>Base de datos: ${data.database}</p>
+                    <p>CORS: ${data.cors}</p>
+                `;
+            } catch (error) {
+                document.getElementById('resultado').innerHTML = `
+                    <h3>🌐 Test Conexión:</h3>
+                    <p style="color: red;">❌ ERROR: ${error.message}</p>
+                `;
+            }
+        }
+
+        async function testLogin() {
+            try {
+                const response = await fetch(`${API_URL}/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: 'admin@inventarios.com',
+                        password: '123456'
+                    })
+                });
+                
+                const data = await response.json();
+                
+                let html = `<h3>🔐 Test Login:</h3>`;
+                
+                if (data.success) {
+                    html += `<p style="color: green;">✅ LOGIN EXITOSO</p>`;
+                    html += `<p>Usuario: ${data.user.nombre} (${data.user.rol})</p>`;
+                    html += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                } else {
+                    html += `<p style="color: red;">❌ LOGIN FALLIDO: ${data.message}</p>`;
+                }
+                
+                document.getElementById('resultado').innerHTML = html;
+                
+            } catch (error) {
+                document.getElementById('resultado').innerHTML = `
+                    <h3>🔐 Test Login:</h3>
+                    <p style="color: red;">❌ ERROR: ${error.message}</p>
+                    <p>Posible problema de CORS</p>
+                `;
+            }
+        }
+
+        async function testProductos() {
+            try {
+                const response = await fetch(`${API_URL}/productos`);
+                const productos = await response.json();
+                
+                document.getElementById('resultado').innerHTML = `
+                    <h3>📦 Test Productos:</h3>
+                    <p style="color: green;">✅ ${productos.length} productos cargados</p>
+                    <pre>${JSON.stringify(productos, null, 2)}</pre>
+                `;
+            } catch (error) {
+                document.getElementById('resultado').innerHTML = `
+                    <h3>📦 Test Productos:</h3>
+                    <p style="color: red;">❌ ERROR: ${error.message}</p>
+                `;
+            }
+        }
+    </script>
+</body>
+</html>

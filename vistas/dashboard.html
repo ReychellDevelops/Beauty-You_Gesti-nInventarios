@@ -1,0 +1,115 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="jumbotron bg-light p-5 rounded">
+                <h1 class="display-4">💎 Bienvenido a Beauty You</h1>
+                <p class="lead">Sistema de Gestión de Joyería</p>
+                <hr class="my-4">
+                <p>Selecciona una opción del menú lateral para comenzar.</p>
+                
+                <div class="row mt-5">
+                    <div class="col-md-3">
+                        <div class="card text-white bg-primary mb-3">
+                            <div class="card-body text-center">
+                                <h2 class="card-title" id="totalProductos">--</h2>
+                                <p class="card-text">Productos en Inventario</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-success mb-3">
+                            <div class="card-body text-center">
+                                <h2 class="card-title">0</h2>
+                                <p class="card-text">Ventas Hoy</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-warning mb-3">
+                            <div class="card-body text-center">
+                                <h2 class="card-title" id="bajoStock">--</h2>
+                                <p class="card-text">Stock Bajo</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-white bg-info mb-3">
+                            <div class="card-body text-center">
+                                <h2 class="card-title" id="valorInventario">--</h2>
+                                <p class="card-text">Valor Inventario</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resumen rápido -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>📈 Resumen Rápido</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h6>Productos por Categoría</h6>
+                                        <ul class="list-group" id="categoriasList">
+                                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                Cargando...
+                                                <span class="badge bg-primary rounded-pill">--</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h6>Acciones Rápidas</h6>
+                                        <div class="d-grid gap-2">
+                                            <button class="btn btn-outline-primary" onclick="cargarVista('productos')">
+                                                <i class="bi bi-box me-2"></i>Gestionar Productos
+                                            </button>
+                                            <button class="btn btn-outline-success" onclick="cargarVista('ventas')">
+                                                <i class="bi bi-cart-check me-2"></i>Registrar Venta
+                                            </button>
+                                            <button class="btn btn-outline-warning" onclick="cargarVista('compras')">
+                                                <i class="bi bi-bag-check me-2"></i>Registrar Compra
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Función para cargar categorías (se ejecuta desde dashboard.js)
+    async function cargarCategorias() {
+        try {
+            const productos = await database.getProductos();
+            const categorias = {};
+            
+            productos.forEach(producto => {
+                categorias[producto.categoria] = (categorias[producto.categoria] || 0) + 1;
+            });
+            
+            const categoriasList = document.getElementById('categoriasList');
+            categoriasList.innerHTML = '';
+            
+            Object.entries(categorias).forEach(([categoria, cantidad]) => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                li.innerHTML = `
+                    ${categoria}
+                    <span class="badge bg-primary rounded-pill">${cantidad}</span>
+                `;
+                categoriasList.appendChild(li);
+            });
+            
+        } catch (error) {
+            console.error('Error cargando categorías:', error);
+        }
+    }
+</script>

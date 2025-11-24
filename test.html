@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Conexión Puerto 3001</title>
+</head>
+<body>
+    <h1>🔍 Test Puerto 3001</h1>
+    <button onclick="probarConexion()">Probar Conexión</button>
+    <div id="resultado"></div>
+
+    <script>
+        async function probarConexion() {
+            const resultado = document.getElementById('resultado');
+            
+            try {
+                // Probar conexión básica
+                const response = await fetch('http://localhost:3001/');
+                const data = await response.json();
+                resultado.innerHTML = `<p style="color: green;">✅ API CONECTADA: ${data.message}</p>`;
+                
+                // Probar productos
+                const response2 = await fetch('http://localhost:3001/api/productos');
+                const productos = await response2.json();
+                resultado.innerHTML += `<p style="color: green;">✅ PRODUCTOS: ${productos.length} productos cargados</p>`;
+                resultado.innerHTML += `<pre>${JSON.stringify(productos, null, 2)}</pre>`;
+                
+            } catch (error) {
+                resultado.innerHTML = `<p style="color: red;">❌ ERROR: ${error.message}</p>`;
+                resultado.innerHTML += `<p>💡 Asegúrate de que el servidor esté corriendo en puerto 3001</p>`;
+            }
+        }
+    </script>
+</body>
+</html>
