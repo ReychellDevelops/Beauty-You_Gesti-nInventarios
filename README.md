@@ -30,26 +30,35 @@ Sistema completo de gestión de inventarios para joyería desarrollado con Node.
 
 ## 🚀 Instalación
 
-1. Clonar el repositorio:
-en bash
-git clone https://github.com/ReychellDevelops/beauty-you-inventarios.git
+**1. Clonar el repositorio:**
+    
+    en bash
 
-2. Instalar dependencias:
-en bash
-cd beauty-you-inventarios/api
-npm install
+    git clone https://github.com/ReychellDevelops/beauty-you-inventarios.git
 
-3. Configurar base de datos MySQL:
-en workbench
-Crear base de datos sistema_inventarios
-Ejecutar el script SQL incluido
+**2. Instalar dependencias:**
 
-4. ejecutar el servidor
-en bash en la carpeta en donde se encuentra el proyecto
-node server.js
+    en bash
 
-5. Abrir en el navegador
-http://localhost:3001
+    cd beauty-you-inventarios/api
+    npm install
+
+**3. Configurar base de datos MySQL:**
+    
+    en workbench
+
+    Crear base de datos sistema_inventarios
+    Ejecutar el script SQL incluido
+
+**4. ejecutar el servidor**
+    
+    en bash en la carpeta en donde se encuentra el proyecto
+    
+    node server.js
+
+**5. Abrir en el navegador**
+    
+    http://localhost:3001
 
 
 ## 👤 Credenciales de Prueba
@@ -68,34 +77,18 @@ http://localhost:3001
 
 ## 📁 Estructura del Proyecto ##
 beauty-you-inventarios/
-├── .gitignore
-├── README.md
-├── package.json
-├── database.sql
-├── api/
-│   ├── server.js
-│   ├── package.json
-│   ├── package-lock.json
-│   └── database.js
-├── js/
-│   ├── app.js
-│   ├── database.js
-│   └── modules/
-│       ├── productos.js
-│       ├── dashboard.js
-│       ├── proveedores.js
-│       ├── clientes.js
-│       ├── ventas.js
-│       └── compras.js
-├── vistas/
-│   ├── productos.html
-│   ├── dashboard.html
-│   ├── proveedores.html
-│   ├── clientes.html
-│   ├── ventas.html
-│   └── compras.html
-├── index.html
-└── login.html
+├── api/                 # Backend Node.js
+│   ├── server.js       # Servidor principal
+│   ├── package.json    # Dependencias
+│   └── database.js     # Configuración MySQL
+├── js/                 # Frontend JavaScript
+│   ├── app.js          # Aplicación principal
+│   ├── database.js     # Cliente API
+│   └── modules/        # Módulos por vista
+├── vistas/             # Vistas HTML
+├── index.html          # Aplicación principal
+├── login.html          # Página de login
+└── README.md           # Documentación
 
 ## 👥 Roles y Permisos ##
 
