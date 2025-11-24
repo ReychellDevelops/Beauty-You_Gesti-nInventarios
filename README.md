@@ -68,18 +68,34 @@ http://localhost:3001
 
 ## 📁 Estructura del Proyecto ##
 beauty-you-inventarios/
-├── api/                 # Backend Node.js
-│   ├── server.js       # Servidor principal
-│   ├── package.json    # Dependencias
-│   └── database.js     # Configuración MySQL
-├── js/                 # Frontend JavaScript
-│   ├── app.js          # Aplicación principal
-│   ├── database.js     # Cliente API
-│   └── modules/        # Módulos por vista
-├── vistas/             # Vistas HTML
-├── index.html          # Aplicación principal
-├── login.html          # Página de login
-└── README.md           # Documentación
+├── .gitignore
+├── README.md
+├── package.json
+├── database.sql
+├── api/
+│   ├── server.js
+│   ├── package.json
+│   ├── package-lock.json
+│   └── database.js
+├── js/
+│   ├── app.js
+│   ├── database.js
+│   └── modules/
+│       ├── productos.js
+│       ├── dashboard.js
+│       ├── proveedores.js
+│       ├── clientes.js
+│       ├── ventas.js
+│       └── compras.js
+├── vistas/
+│   ├── productos.html
+│   ├── dashboard.html
+│   ├── proveedores.html
+│   ├── clientes.html
+│   ├── ventas.html
+│   └── compras.html
+├── index.html
+└── login.html
 
 ## 👥 Roles y Permisos ##
 
