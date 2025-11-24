@@ -34,7 +34,7 @@ Sistema completo de gestión de inventarios para joyería desarrollado con Node.
     
     en bash
 
-    git clone https://github.com/ReychellDevelops/beauty-you-inventarios.git
+    git clone https://github.com/ReychellDevelops/Beauty-You_Gesti-nInventarios.git
 
 **2. Instalar dependencias:**
 
@@ -48,11 +48,11 @@ Sistema completo de gestión de inventarios para joyería desarrollado con Node.
     en workbench
 
     Crear base de datos sistema_inventarios
-    Ejecutar el script SQL incluido
+    Ejecutar el script SQL incluido (database.sql)
 
 **4. ejecutar el servidor**
     
-    en bash en la carpeta en donde se encuentra el proyecto
+    en bash, en la carpeta en donde se encuentra el proyecto
     
     node server.js
 
@@ -76,19 +76,20 @@ Sistema completo de gestión de inventarios para joyería desarrollado con Node.
     Password: 123456
 
 ## 📁 Estructura del Proyecto ##
-beauty-you-inventarios/
-├── api/                 # Backend Node.js
-│   ├── server.js       # Servidor principal
-│   ├── package.json    # Dependencias
-│   └── database.js     # Configuración MySQL
-├── js/                 # Frontend JavaScript
-│   ├── app.js          # Aplicación principal
-│   ├── database.js     # Cliente API
-│   └── modules/        # Módulos por vista
-├── vistas/             # Vistas HTML
-├── index.html          # Aplicación principal
-├── login.html          # Página de login
-└── README.md           # Documentación
+    
+    **beauty-you-inventarios/**
+    ├── api/                 # Backend Node.js
+    │   ├── server.js       # Servidor principal
+    │   ├── package.json    # Dependencias
+    │   └── database.js     # Configuración MySQL
+    ├── js/                 # Frontend JavaScript
+    │   ├── app.js          # Aplicación principal
+    │   ├── database.js     # Cliente API
+    │   └── modules/        # Módulos por vista
+    ├── vistas/             # Vistas HTML
+    ├── index.html          # Aplicación principal
+    ├── login.html          # Página de login
+    └── README.md           # Documentación
 
 ## 👥 Roles y Permisos ##
 
